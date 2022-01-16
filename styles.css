@@ -1,0 +1,49 @@
+#headertext {
+    text-align: center;
+    font-family: Helvetica, sans-serif;
+    height: 66%;
+    width: calc(100% - 179px * 2);
+    margin: 5px;
+}
+#headertextwrapper  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+#headerlogo {
+    position: absolute;
+    margin: 0.5em;
+}
+h1 {
+    font-size: 2rem;
+}
+h2 {
+    font-size: 1.4rem;
+}
+h3 {
+    font-size: 1.3rem;
+}
+h4 {
+    font-size: 1.2rem;
+}
+p {
+    font-size: 1.1rem;
+}
+.tiny {
+    font-size: 0.8rem;
+}
+header {
+    margin-bottom: 1em;
+    border: 2px solid rgb(111, 185, 255);
+    height: calc(179px + 1em);
+}
+article {
+    margin-bottom: 5px;
+}
+html {
+    font-family: Garamond, serif;
+}
+
