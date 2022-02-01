@@ -31,30 +31,12 @@
             <h2>Projects</h2>
             <div class="hbr"></div>
             <strong>Check out our <a href="https://github.com/CleanroomMC/">Github</a> to see all projects.</strong>
-            <article>
-                <h4>AssetMover <a href="https://github.com/CleanroomMC/AssetMover" class="tiny">(link)</a></h4>
-                <p>Obtains vanilla/mod assets at runtime by downloading from URLs. This avoids needing to include them in builds, potentially violating licenses.</p>
-            </article>
-            <article>
-                <h4>Millennium <a href="https://github.com/CleanroomMC/Millennium" class="tiny">(link)</a></h4>
-                <p>Ports various features from post-1.12.2 versions of Minecraft.</p>
-            </article>
-            <article>
-                <h4>Better Questing <a href="https://github.com/CleanroomMC/BetterQuesting" class="tiny">(link)</a></h4>
-                <p>Continues this quest mod from where @Funwayguy stopped development, adding bugfixes and improvements.</p>
-            </article>
-            <article>
-                <h4>Encyclopedia <a href="https://github.com/CleanroomMC/Encyclopedia" class="tiny">(link)</a></h4>
-                <p>A guide for all 1.12.2 Forge modders (Currently a work in progress)!</p>
-            </article>
-            <article>
-                <h4>OrangeCore <a href="https://github.com/CleanroomMC/OrangeCore" class="tiny">(link)</a></h4>
-                <p>Adds many custom food mechanics, building on AppleCore. Inspired by TerraFirmaCraft's food system.</p>
-            </article>
-            <article>
-                <h4>Template Dev Environment <a href="https://github.com/CleanroomMC/TemplateDevEnv" class="tiny">(link)</a></h4>
-                <p>A simple template for starting a 1.12.2 mod project.</p>
-            </article>
+            <div id="projectlist">
+            </div>
+            <a id="expandable" class="tiny" style="color: -webkit-link;cursor: pointer;text-decoration: underline;">(more)</a>
+            <br>
+            <br>
+            Projects that may be ported to 1.12.2 in the future can be found at <a href="https://github.com/orgs/CleanroomMC/projects/1">https://github.com/orgs/CleanroomMC/projects/1</a>, and 1.12.2 mods that have been forked for further improvements can be found at <a href="https://github.com/orgs/CleanroomMC/projects/2">https://github.com/orgs/CleanroomMC/projects/2</a>.
             <article>
 
             </article>
@@ -62,5 +44,66 @@
         <footer>
 
         </footer>
+        <script>
+modInfo = [
+    {
+        name: "AssetMover",
+        info: "Obtains vanilla/mod assets at runtime by downloading from URLs. This avoids needing to include them in builds, potentially violating licenses."
+    },
+    {
+        name: "Millennium",
+        info: "Ports various features from post-1.12.2 versions of Minecraft."
+    },
+    {
+        name: "Better Questing",
+        url: "BetterQuesting",
+        info: "Continues this quest mod from where @Funwayguy stopped development, adding bugfixes and improvements."
+    },
+    {
+        name: "Airlock",
+        info: "An API for developing 1.12.2 projects."
+    },
+    {
+        name: "Encyclopedia",
+        info: "A guide for all 1.12.2 Forge modders (Currently a work in progress)!"
+    },
+    {
+        name: "OrangeCore",
+        info: "Adds many custom food mechanics, building on AppleCore. Inspired by TerraFirmaCraft's food system."
+    },
+    {
+        name: "Template Dev Environment",
+        url: "TemplateDevEnv",
+        info: "A simple template for starting a 1.12.2 mod project."
+    }
+];
+
+loaded = 0;
+window.addEventListener("load", addProjects);
+document.getElementById("expandable").addEventListener("click", addProjects)
+function addProjects()
+{
+    for (let pos = loaded; pos < Math.min(modInfo.length, loaded + 3); pos++)
+    {
+        let article = document.createElement("article");
+        let h4 = document.createElement("h4");
+        h4.innerHTML = 
+        `${modInfo[pos].name} <a href="https://github.com/CleanroomMC/${modInfo[pos].url?modInfo[pos].url:modInfo[pos].name}" class="tiny">(link)</a>`;
+        article.appendChild(h4);
+        if (modInfo[pos].info)
+        {
+            let info = document.createElement("p");
+            info.innerHTML = modInfo[pos].info;
+            article.appendChild(info);
+        }
+        document.getElementById("projectlist").appendChild(article);
+    }
+    loaded = Math.min(loaded + 3, modInfo.length);
+    if (loaded == modInfo.length)
+    {
+        document.getElementById("expandable").style.display = "none";
+    }
+}
+        </script>
     </body>
 </html>
